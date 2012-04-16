@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 Lightbox Sample</title>
+	
+	<style type="text/css" media="screen">
+		* { 
+			margin: 0;
+			padding: 0;
+		}
+
+		html, body { height: 100%; }
+
+		body {
+			background-color: #525152;
+		}
+
+		a, img {
+			border: 0;
+			outline: 0;
+		}
+
+		a:link { color: #FFFFFF; }
+		a:visited { color: #FFFFFF; }
+		a:hover { color: #FF75C8; }
+		
+		
+		/* HTML5のタグをブロック要素にしちゃうよ */
+		header, section, footer, aside, nav, article, figure {
+		    display: block;
+		}
+		
+		header h1 {
+			font: bold 35px/35px Helvetica,Arial,Sans-serif;
+			text-shadow: 0 2px 6px #333333;
+			padding: 15px;
+			border:1px solid #666;
+		}
+
+		header p {
+			font: bold 15px Helvetica,Arial,Sans-serif;
+			text-shadow: 0 2px 6px #333333;
+			padding: 15px;
+		}
+		
+		#content p {
+			padding: 30px 0;
+			border-bottom: 1px solid #666;
+			text-align: center;
+		}
+
+		#content p a {
+			display: block;
+			font: bold 35px/35px Helvetica,Arial,Sans-serif;
+			text-shadow: 0 2px 6px #333333;
+		}
+		
+		footer {
+			text-align: right;
+			padding: 15px;
+		}
+		
+		/* ここから下がLightbox用のスタイル */
+		/* Lightboxの枠 */
+		.lightbox {
+			height: 100%;
+			width: 100%;
+			background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1000;
+			display: none;
+
+			-webkit-animation-name: fade;
+			-webkit-animation-duration: 0.50s;
+			-webkit-animation-iteration-count: 1;
+			-webkit-animation-direction: normal;
+			-webkit-animation-timing-function: ease-in;
+		}
+
+		/* Lightbox全体を覆うアンカー */
+		.lightbox a {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+
+		/* アンカーの中にいるimg要素 */
+		.lightbox img {
+			-moz-box-shadow: 0 0 15px #444444;
+			background-color: #FFFFFF;
+			padding: 5px 5px 45px;
+
+			-webkit-animation-name: grow;
+			-webkit-animation-duration: 0.50s;
+			-webkit-animation-iteration-count: 1;
+			-webkit-animation-direction: normal;
+			-webkit-animation-timing-function: ease-out;
+		}
+
+		/* アンカーの中にいる文字を表示する要素 */
+		.lightbox p {
+			-moz-box-shadow: 0 0 15px #444444;
+			background-color: #FFFFFF;
+			color: #000000;
+			font: bold 15px Helvetica,Arial,Sans-serif;
+			text-shadow: 0 2px 6px #333333;
+			padding: 5px 5px 45px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -30%;
+			margin-top: -200px;
+			width: 60%;
+			height: 400px;
+
+			-webkit-animation-name: grow2;
+			-webkit-animation-duration: 0.50s;
+			-webkit-animation-iteration-count: 1;
+			-webkit-animation-direction: normal;
+			-webkit-animation-timing-function: ease-in;
+		}
+
+		/* lightboxがフラグメントID経由でアクティブになった場合に、ここのスタイルが適用される */
+		.lightbox:target {
+			display: table;
+		}
+
+		/* keyframes */
+		@-webkit-keyframes fade{
+			from {opacity: 0;}
+			to 	{opacity: 1;}
+		}
+
+		@-webkit-keyframes grow{
+			from {height: 0px;}
+			to 	{height: 300px;}
+		}
+
+		@-webkit-keyframes grow2{
+			from {height: 0px;}
+			to 	{height: 400px;}
+		}
+	</style>
+</head>
+<body>
+	<!-- header -->
+	<header>
+		<h1>CSS3 Lightbox Sample</h1>
+		<p>
+			詳細はソースを見てくださいね。<br>
+			Webkit(Safari, Chrome)でクリックするとアニメーションがもれなく付いてきます。
+		</p>
+	</header>
+
+	<!-- anchor -->
+	<section id="content">
+		<p><a href="#sample1">Sample1</a></p>
+		<p><a href="#sample2">Sample2</a></p>
+		<p><a href="#sample3">Sample3</a></p>
+		<p><a href="#sample4">Sample4</a></p>
+		<p><a href="#sample5">Sample5</a></p>
+	</section>
+	
+	<!-- lightbox -->
+	<section>
+		<article id="sample1" class="lightbox">
+			<a href="#close">
+				<img src="1.jpg">
+			</a>
+		</article>
+		<article id="sample2" class="lightbox">
+			<a href="#close">
+				<img src="2.jpg">
+			</a>
+		</article>
+		<article id="sample3" class="lightbox">
+			<a href="#close">
+				<img src="3.jpg">
+			</a>
+		</article>
+		<article id="sample4" class="lightbox">
+			<a href="#close">
+				<img src="4.jpg">
+			</a>
+		</article>
+		<article id="sample5" class="lightbox">
+			<a href="#close">
+				<p>
+					ほげほげ<br>ほげほげ
+				</p>
+			</a>
+		</article>
+	</section>
+
+	<!-- footer -->
+	<footer>
+		<p>Created by <a href="http://hisasann.com/" target="_blank">hisasann.com</a></p>
+	</footer>
+</body>
+</html>
